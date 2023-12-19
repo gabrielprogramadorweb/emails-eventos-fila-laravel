@@ -5,6 +5,9 @@ namespace App\Listeners;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\Login;
+use App\Mail\NovoAcesso;
+use Illuminate\Support\Facades\Mail;
+
 class LoginListener
 {
     /**
@@ -28,7 +31,9 @@ class LoginListener
       info('Logooooooou!!!!');
       info($event->user->name);
       info($event->user->email);
-
+      // pode selecionar para enviar para user, ou users[] ou email
+      Mail::to($event->user)
+        ->send(new NovoAcesso($event->user));
 
     }
 }

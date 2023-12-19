@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\User;
 
 class NovoAcesso extends Mailable
 {
@@ -16,9 +17,9 @@ class NovoAcesso extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +29,7 @@ class NovoAcesso extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.novoacesso')->with(['nome' => $this->user->name
+    ]);
     }
 }
