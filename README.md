@@ -25,3 +25,5 @@ Após isso, execute no terminal bass o comando:
 php artisan event:generate
 
 php artisan make:listener NewHomeListener
+
+php artisan make:mail NovoAcesso
