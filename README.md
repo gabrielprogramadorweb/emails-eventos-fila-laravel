@@ -1,7 +1,7 @@
 ADD em app/provider/EventServiceProvider
 
 
-``````<?php
+```<?php
 
 protected $listen = [
 
@@ -17,7 +17,7 @@ protected $listen = [
 
 ]
 
-?>
+```?>
 
 Após isso, execute no terminal bass o comando:
 
