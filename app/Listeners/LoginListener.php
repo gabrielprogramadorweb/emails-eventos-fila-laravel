@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Auth\Events\Login;
 use App\Mail\NovoAcesso;
 use Illuminate\Support\Facades\Mail;
@@ -28,12 +28,19 @@ class LoginListener
      */
     public function handle(Login $event)
     {
-      info('Logooooooou!!!!');
-      info($event->user->name);
-      info($event->user->email);
-      // pode selecionar para enviar para user, ou users[] ou email
-      Mail::to($event->user)
-        ->send(new NovoAcesso($event->user));
+        info('Logou!');
+        info($event->user->name);
+        info($event->user->email);
+        // user, users[], email
 
+        //$quando = now()->addMinutes(5);
+
+        //Mail::to($event->user)
+            //->send(new NovoAcesso($event->user));
+            //->queue(new NovoAcesso($event->user));
+            //->later($quando, new NovoAcesso($event->user));
+        Mail::to($event->user)
+        ->queue(new NovoAcesso($event->user));   
     }
+
 }
