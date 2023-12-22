@@ -33,14 +33,18 @@ class LoginListener
         info($event->user->email);
         // user, users[], email
 
-        //$quando = now()->addMinutes(5);
+        $quando = now()->addMinutes(5);
 
-        //Mail::to($event->user)
+        Mail::to($event->user)
             //->send(new NovoAcesso($event->user));
             //->queue(new NovoAcesso($event->user));
-            //->later($quando, new NovoAcesso($event->user));
-        Mail::to($event->user)
-        ->queue(new NovoAcesso($event->user));   
+            ->later($quando, new NovoAcesso($event->user));
+        //Mail::to($event->user)
+          //  ->queue(new NovoAcesso($event->user));            
+        //Mail::to($event->user)
+         
+
+
     }
 
 }

@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use App\Events\HomeEvent;
+
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
 class NewHomeListener
 {
     /**
@@ -25,6 +27,6 @@ class NewHomeListener
      */
     public function handle(HomeEvent $event)
     {
-        info ("Entrou no home 2");
+        info("Entrou no home 2 - NewHomeListener");
     }
 }

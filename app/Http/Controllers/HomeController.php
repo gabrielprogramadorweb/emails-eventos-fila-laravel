@@ -20,11 +20,11 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        event(new HomeEvent("Ola Mundo!"));
+        event(new HomeEvent("Ola mundo"));
         return view('home');
     }
 }
